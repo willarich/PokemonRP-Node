@@ -1,0 +1,13 @@
+<mat-accordion *ngIf="pokemon.length > 0">
+  <mat-expansion-panel *ngFor="let mon of pokemon">
+    <mat-expansion-panel-header>
+      {{mon.name}}
+    </mat-expansion-panel-header>
+    <p>{{mon.description}}</p>
+    <mat-action-row>
+      <button mat-button color="primary" >EDIT</button>
+      <button mat-button color="warn" >DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="pokemon.length <= 0">no pokeon yet</p>

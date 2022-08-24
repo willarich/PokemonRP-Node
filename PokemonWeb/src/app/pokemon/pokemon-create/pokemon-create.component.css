@@ -1,0 +1,13 @@
+mat-card {
+  margin: auto;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+
+}
+
+:host {
+  background-color: aqua;
+}

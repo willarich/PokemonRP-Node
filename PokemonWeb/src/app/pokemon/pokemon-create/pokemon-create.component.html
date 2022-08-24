@@ -1,0 +1,29 @@
+<mat-card>
+  <form (submit)="onAddPokemon(pokemonForm)" #pokemonForm="ngForm">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             name="name"
+             ngModel
+             required
+             minlength="3"
+             placeholder="Pokemon Name"
+             #nameInput="ngModel">
+      <mat-error *ngIf="nameInput.invalid">Enter a pokemon name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="2"
+        name="description"
+        placeholder="Pokemon Description"
+        ngModel></textarea>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save
+    </button>
+  </form>
+</mat-card>
+
