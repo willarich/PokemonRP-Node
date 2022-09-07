@@ -30,4 +30,8 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     this.pokemonSub.unsubscribe();
   }
 
+  onDelete(pokemonId: string){
+    this.pokemonService.deletePokemon(pokemonId);
+  }
+
 }

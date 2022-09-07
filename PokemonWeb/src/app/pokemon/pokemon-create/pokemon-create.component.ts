@@ -17,7 +17,7 @@ export class PokemonCreateComponent {
       return;
     }
     const pokemon: PokemonModel = {
-      id:'123',
+      id: '',
       name: form.value.name,
       description:form.value.description
     };

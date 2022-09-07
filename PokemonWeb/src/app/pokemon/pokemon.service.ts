@@ -1,6 +1,6 @@
 import {PokemonModel} from "./pokemon.model";
 import {Injectable} from "@angular/core";
-import {Subject} from "rxjs";
+import {map, Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})
@@ -12,9 +12,18 @@ export class PokemonService {
   }
 
   getPokemon() {
-    this.http.get<{ message: string, pokemon: PokemonModel[] }>('http://localhost:3000/api/pokemon')
-      .subscribe((pokemonData) => {
-        this.pokemonList = pokemonData.pokemon;
+    this.http.get<{ message: string, pokemon: any }>('http://localhost:3000/api/pokemon')
+      .pipe(map((pokemonData) => {
+        return pokemonData.pokemon.map((pokemon: any) => {
+          return {
+            name: pokemon.name,
+            description: pokemon.description,
+            id: pokemon._id
+          }
+        })
+      }))
+      .subscribe((pokemonList) => {
+        this.pokemonList = pokemonList;
         this.pokemonUpdated.next([...this.pokemonList]);
       });
   }
@@ -24,11 +33,19 @@ export class PokemonService {
   }
 
   addPokemon(newPokemon: PokemonModel) {
-    this.http.post<{message: string}>('http://localhost:3000/api/pokemon', newPokemon)
+    this.http.post<{message: string, pokemonId:string}>('http://localhost:3000/api/pokemon', newPokemon)
       .subscribe((responseData) => {
-        console.log(responseData.message);
+        newPokemon.id = responseData.pokemonId;
         this.pokemonList.push(newPokemon);
         this.pokemonUpdated.next([...this.pokemonList]); //JS arrays are reference type. This syntax creates a value copy of the array.
       })
+  }
+
+  deletePokemon(pokemonId: string){
+    this.http.delete('http://localhost:3000/api/pokemon/' + pokemonId)
+      .subscribe(() => {
+        this.pokemonList = this.pokemonList.filter(pokemon => pokemon.id != pokemonId)
+        this.pokemonUpdated.next([...this.pokemonList]);
+      });
   }
 }
