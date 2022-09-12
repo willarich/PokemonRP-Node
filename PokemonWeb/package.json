@@ -24,7 +24,9 @@
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "mongoose": "^6.5.3",
+    "normal-distribution": "^1.1.1",
     "rxjs": "~7.5.0",
+    "skew-normal-random": "^1.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

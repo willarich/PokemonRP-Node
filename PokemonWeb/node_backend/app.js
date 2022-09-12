@@ -55,4 +55,15 @@ app.delete("/api/pokemon/:id", (req, res, next) => {
     res.status(200).json({message: "pokemon deleted"});
   });
 });
+
+app.get("/api/damage/:value", (req, res, next) => {
+  var skewnorm = require('skew-normal-random');
+  const location = req.params.value* 3.5 / 7 - 2;
+  const result = skewnorm.rSkewNorm(0, location, 2.6, location -5, location + 5);
+  console.log("aj " +result)
+  res.status(200).json({
+    message: "calculated",
+    retNumber: result
+  });
+});
 module.exports = app;

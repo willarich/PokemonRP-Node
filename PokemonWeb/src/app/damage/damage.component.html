@@ -1,0 +1,108 @@
+<mat-card>
+
+  <mat-button-toggle-group [(ngModel)]="roll" aria-label="Font Style">
+        <mat-button-toggle value="20">20</mat-button-toggle>
+        <mat-button-toggle value="19">19</mat-button-toggle>
+        <mat-button-toggle value="18">18</mat-button-toggle>
+        <mat-button-toggle value="17">17</mat-button-toggle>
+        <mat-button-toggle value="16">16</mat-button-toggle>
+        <mat-button-toggle value="15">15</mat-button-toggle>
+        <mat-button-toggle value="14">14</mat-button-toggle>
+        <mat-button-toggle value="13">13</mat-button-toggle>
+        <mat-button-toggle value="12">12</mat-button-toggle>
+        <mat-button-toggle value="11">11</mat-button-toggle>
+        <mat-button-toggle value="10">10</mat-button-toggle>
+        <mat-button-toggle value="9">9</mat-button-toggle>
+        <mat-button-toggle value="8">8</mat-button-toggle>
+        <mat-button-toggle value="7">7</mat-button-toggle>
+        <mat-button-toggle value="6">6</mat-button-toggle>
+        <mat-button-toggle value="5">5</mat-button-toggle>
+        <mat-button-toggle value="4">4</mat-button-toggle>
+        <mat-button-toggle value="3">3</mat-button-toggle>
+        <mat-button-toggle value="2">2</mat-button-toggle>
+        <mat-button-toggle value="1">1</mat-button-toggle>
+      </mat-button-toggle-group>
+  <br>
+  <span>Roll (x{{rollMultiplier}}) - 20 = {{bonus20}}, 1 = {{bonus1}}</span>  <button mat-raised-button color="primary" (click)="onRandomDice()">Random damage roll</button>
+  <br><br>
+
+  <span>Effectiveness (x{{typeMultiplier}})</span>
+  <mat-button-toggle-group [(ngModel)]="effectiveness" aria-label="Font Style" label="Effectiveness">
+    <mat-button-toggle value="-3">x0</mat-button-toggle>
+    <mat-button-toggle value="-2">x0.25</mat-button-toggle>
+    <mat-button-toggle value="-1">x0.5</mat-button-toggle>
+    <mat-button-toggle value="0">x1.0</mat-button-toggle>
+    <mat-button-toggle value="1">x2.0</mat-button-toggle>
+    <mat-button-toggle value="2">x4.0</mat-button-toggle>
+  </mat-button-toggle-group>
+  <br><br>
+  <span>Attack Adjustment (x{{atkMultiplier}})</span>
+  <mat-button-toggle-group [(ngModel)]="atkAdjustment" aria-label="Font Style" label="Effectiveness">
+    <mat-button-toggle value="-4">-4x</mat-button-toggle>
+    <mat-button-toggle value="-3">-3x</mat-button-toggle>
+    <mat-button-toggle value="-2">-2x</mat-button-toggle>
+    <mat-button-toggle value="-1">-1x</mat-button-toggle>
+    <mat-button-toggle value="0">+0</mat-button-toggle>
+    <mat-button-toggle value="1">+1x</mat-button-toggle>
+    <mat-button-toggle value="2">+2x</mat-button-toggle>
+    <mat-button-toggle value="3">+3x</mat-button-toggle>
+    <mat-button-toggle value="4">+4x</mat-button-toggle>
+  </mat-button-toggle-group>
+  <br><br>
+  <span>Defense Adjustment (x{{defMultiplier}})</span>
+  <mat-button-toggle-group [(ngModel)]="defAdjustment" aria-label="Font Style" label="Effectiveness">
+    <mat-button-toggle value="-4">-4x</mat-button-toggle>
+    <mat-button-toggle value="-3">-3x</mat-button-toggle>
+    <mat-button-toggle value="-2">-2x</mat-button-toggle>
+    <mat-button-toggle value="-1">-1x</mat-button-toggle>
+    <mat-button-toggle value="0">+0</mat-button-toggle>
+    <mat-button-toggle value="1">+1x</mat-button-toggle>
+    <mat-button-toggle value="2">+2x</mat-button-toggle>
+    <mat-button-toggle value="3">+3x</mat-button-toggle>
+    <mat-button-toggle value="4">+4x</mat-button-toggle>
+  </mat-button-toggle-group>
+  <br><br>
+  <span>STAB Bonus (x{{stabMultiplier}})</span>
+  <mat-button-toggle-group [(ngModel)]="stab" aria-label="Font Style" label="Effectiveness">
+    <mat-button-toggle value="0">No</mat-button-toggle>
+    <mat-button-toggle value="1">Yes</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <span>Special Atk (x{{specialMultiplier}})</span>
+  <mat-button-toggle-group [(ngModel)]="specialAtk" aria-label="Font Style" label="Effectiveness">
+    <mat-button-toggle value="0">Basic</mat-button-toggle>
+    <mat-button-toggle value="1">x1</mat-button-toggle>
+    <mat-button-toggle value="2">x2</mat-button-toggle>
+  </mat-button-toggle-group>
+  <br><br>
+  <span>Other Adjustment (x{{otherMultiplier}})</span>
+  <mat-button-toggle-group [(ngModel)]="otherAdjustment" aria-label="Font Style" label="Effectiveness">
+    <mat-button-toggle value="-4">-4x</mat-button-toggle>
+    <mat-button-toggle value="-3">-3x</mat-button-toggle>
+    <mat-button-toggle value="-2">-2x</mat-button-toggle>
+    <mat-button-toggle value="-1">-1x</mat-button-toggle>
+    <mat-button-toggle value="0">+0</mat-button-toggle>
+    <mat-button-toggle value="1">+1x</mat-button-toggle>
+    <mat-button-toggle value="2">+2x</mat-button-toggle>
+    <mat-button-toggle value="3">+3x</mat-button-toggle>
+    <mat-button-toggle value="4">+4x</mat-button-toggle>
+  </mat-button-toggle-group>
+  <br>
+  <span> Average damage: {{avgDamage}}</span>
+  <span>Roll adjusted: {{rollAdjusted}}  </span>
+  <button
+      mat-raised-button
+      color="warn"
+      (click)="onReset()">Reset
+    </button>
+  <button
+    mat-raised-button
+    color="info"
+    (click)="onCalculate()">Calculate
+  </button>
+  <br>
+  <span>Final damage: </span>
+
+</mat-card>
+
+

@@ -15,6 +15,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
+import { DamageComponent } from './damage/damage.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
     PokemonCreateComponent,
     HeaderComponent,
     PokemonListComponent,
+    DamageComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatExpansionModule,
     MatIconModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
