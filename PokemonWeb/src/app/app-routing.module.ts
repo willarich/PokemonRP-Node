@@ -7,7 +7,7 @@ import {DamageComponent} from "./damage/damage.component";
 const routes: Routes = [
   { path: '', component: PokemonListComponent },
   { path: 'create', component: PokemonCreateComponent },
-  { path: 'edit/:postId', component: PokemonCreateComponent },
+  { path: 'edit/:pokemonId', component: PokemonCreateComponent },
   { path: 'damage', component: DamageComponent },
 ];
 

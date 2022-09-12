@@ -12,23 +12,23 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 export class PokemonCreateComponent implements OnInit{
 
   private mode = "create";
-  private postId: string | null;
-  public pokemon?: PokemonModel;
+  private pokemonId: string | null;
+  public pokemon!: PokemonModel;
 
   constructor(public pokemonService: PokemonService, public route: ActivatedRoute) {
-    this.postId = null;
+    this.pokemonId = null;
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap:ParamMap) => {
-      if (paramMap.has("postId")){
+      if (paramMap.has("pokemonId")){
         this.mode = "edit";
-        this.postId = paramMap.get("postId");
-        this.pokemon = this.pokemonService.getPokemon(this.postId!) as PokemonModel;
+        this.pokemonId = paramMap.get("pokemonId");
+        this.pokemon = this.pokemonService.getPokemon(this.pokemonId!) as PokemonModel;
       }
       else {
         this.mode = "create";
-        this.postId = null;
+        this.pokemonId = null;
       }
     });
   }
