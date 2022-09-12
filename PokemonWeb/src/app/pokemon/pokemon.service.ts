@@ -11,7 +11,7 @@ export class PokemonService {
   constructor(private http: HttpClient) {
   }
 
-  getPokemon() {
+  getPokemons() {
     this.http.get<{ message: string, pokemon: any }>('http://localhost:3000/api/pokemon')
       .pipe(map((pokemonData) => {
         return pokemonData.pokemon.map((pokemon: any) => {
@@ -26,6 +26,9 @@ export class PokemonService {
         this.pokemonList = pokemonList;
         this.pokemonUpdated.next([...this.pokemonList]);
       });
+  }
+  getPokemon(id:string){
+    return {...this.pokemonList.find(p => p.id === id)}//... is spread operator. Creates a clone of the list
   }
 
   getPokemonUpdateListener() {

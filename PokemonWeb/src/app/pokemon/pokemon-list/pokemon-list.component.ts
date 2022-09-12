@@ -19,7 +19,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     //this.pokemon = this.pokemonService.getPokemon();
-    this.pokemonService.getPokemon();
+    this.pokemonService.getPokemons();
     this.pokemonSub = this.pokemonService.getPokemonUpdateListener()
       .subscribe((pokemon:PokemonModel[]) => {
           this.pokemon = pokemon;

@@ -4,7 +4,7 @@
       <input matInput
              type="text"
              name="name"
-             ngModel
+]             [ngModel]="pokemon.name"
              required
              minlength="3"
              placeholder="Pokemon Name"
@@ -17,7 +17,9 @@
         rows="2"
         name="description"
         placeholder="Pokemon Description"
-        ngModel></textarea>
+        [ngModel]="pokemon.description"
+
+      ></textarea>
     </mat-form-field>
     <button
       mat-raised-button
